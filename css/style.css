@@ -121,3 +121,7 @@ a:hover,a:focus {
 .row.contact > h2 {
   margin-bottom: 10px;
 }
+
+#datatable {
+  display: none;
+}
