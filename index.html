@@ -13,6 +13,7 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/github.css">
 
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
@@ -81,32 +82,114 @@
       <div class="row examples" id="examples">
         <h2>Examples</h2>
         <pre><code class="Bash">
-./ledis-server -config=/etc/ledis.json
+          ./ledis-server -config=/etc/ledis.json
 
-//another shell
-ledis-cli -p 6380
+          //another shell
+          ledis-cli -p 6380
 
-ledis 127.0.0.1:6380&gt; set a 1
-OK
-ledis 127.0.0.1:6380&gt; get a
-"1"
+          ledis 127.0.0.1:6380&gt; set a 1
+          OK
+          ledis 127.0.0.1:6380&gt; get a
+          "1"
+                    </code></pre>
+
+                    <h2>Lib Example</h2>
+                    <pre><code class="Bash">import "github.com/siddontang/ledisdb/ledis"
+          l, _ := ledis.Open(cfg)
+          db, _ := l.Select(0)
+
+          db.Set(key, value)
+
+          db.Get(key)
           </code></pre>
-
-          <h2>Lib Example</h2>
-          <pre><code class="Bash">import "github.com/siddontang/ledisdb/ledis"
-l, _ := ledis.Open(cfg)
-db, _ := l.Select(0)
-
-db.Set(key, value)
-
-db.Get(key)
-</code></pre>
       </div>
 
       <!-- /benchmark-->
       <div class="row benchmark" id="benchmark"> 
       <h2>Benchmark</h2>
 
+        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+        <table id="datatable">
+          <thead>
+            <tr>
+              <th></th>
+              <th>redis</th>
+              <th>ssdb</th>
+                    <th>ledis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>SET</th>
+              <td>42735.04</td>
+              <td>35971.22</td>
+                    <td>38759.69</td>
+            </tr>
+            <tr>
+              <th>GET</th>
+              <td>45871.56</td>
+              <td>47393.37</td>
+              <td>40160.64</td>
+            </tr>
+            <tr>
+              <th>INCR</th>
+              <td>45248.87</td>
+              <td>36630.04</td>
+              <td>36101.08</td>
+            </tr>
+            <tr>
+              <th>LPUSH</th>
+              <td>45045.04</td>
+              <td>37174.72</td>
+              <td>33003.30</td>
+            </tr>
+            <tr>
+              <th>LPOP</th>
+              <td>43103.45</td>
+              <td>38167.94</td>
+              <td>27624.31</td>
+            </tr>
+            <tr>
+              <th>LPUSH-lrange</th>
+              <td>44843.05</td>
+              <td>37593.98</td>
+              <td>32894.74</td>
+            </tr>
+                <tr>
+              <th>LRANGE_100</th>
+              <td>14727.54</td>
+              <td>905.55</td>
+              <td>7352.94</td>
+            </tr>
+                <tr>
+              <th>LRANGE_300</th>
+              <td>6915.63</td>
+              <td>327.78</td>
+              <td>2867.79</td>
+            </tr>
+                 <tr>
+              <th>LRANGE_500</th>
+              <td>5042.86</td>
+              <td>222.36</td>
+              <td>1778.41</td>
+            </tr>
+                 <tr>
+              <th>LRANGE_600</th>
+              <td>3960.40</td>
+              <td>165.30</td>
+              <td>1590.33</td>
+            </tr>
+                 <tr>
+              <th>MSET</th>
+              <td>33003.30</td>
+              <td>33112.59</td>
+              <td>21881.84</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+          <p>For more information, please take a look at <a href="https://github.com/siddontang/ledisdb/blob/master/benchmark.md"><em>benchmark.md.</em></a></p>
       </div>
 
       <!-- /contact-->
@@ -174,9 +257,41 @@ db.Get(key)
 
     </div> <!-- /container -->
 
-    <link rel="stylesheet" href="css/github.css">
+
+    <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+    
+      <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script>
+    $(function () {
+        $('#container').highcharts({
+            data: {
+                table: document.getElementById('datatable')
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Data extracted from a HTML table in the page'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: 'Units'
+                }
+            },
+            tooltip: {
+                formatter: function() {
+                    return '<b>'+ this.series.name +'</b><br/>'+
+                        this.point.y +' '+ this.point.name.toLowerCase();
+                }
+            }
+        });
+    });
+    </script>
 
   </body>
 </html>
