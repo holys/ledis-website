@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>LedisDB</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right" role="tablist">
+          <li role="presentation" ><a href="#features">Features</a></li>
+          <li role="presentation"><a href="#examples">Examples</a></li>
+          <li role="presentation"> <a href="#benchmark">Benchmark</a></li>
+          <li role="presentation"><a href="#contact">Contact</a></li>
+        </ul>
+        <h3 class="text-muted">LedisDB</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>LedisDB</h1>
+        <p class="lead">A high performance NoSQL like Redis based on LevelDB implemented by Golang.</p>
+        <p><a class="btn btn-lg btn-default" target="_blank" href="https://github.com/siddontang/ledisdb" role="button">
+          <i class="glyphicon glyphicon-eye-open"></i>
+          View on GitHub</a></p>
+      </div>
+
+      <div class="row features" id="features">
+        <div class="col-lg-6">
+          <h3 class="">Data Structure</h3>
+          <p>Rich advanced data structure: KV, List, Hash, ZSet, Bitmap.</p>
+          
+          <h3>LevelDB Rocks</h3>
+          <p>Uses leveldb to store massive data, disk-based storage, over the memory limit.</p>
+
+          <h3>Expiration & TTL</h3>
+          <p>Supports expiration and ttl in all kinds of data structures.</p>
+
+          <h3>CLI Support</h3>
+          <p>Redis clients, like redis-cli, are supported directly.</p>
+
+        </div>
+
+        <div class="col-lg-6">
+        
+          <h3>Multiple Languages</h3>
+          <p>Multiple clients API supports, including Golang, Python, Lua(Openresty).</p>
+
+          <h3>Easy Embedding</h3>
+          <p>Easy to embed in Golang application.</p>
+
+          <h3>Data Protection</h3>
+          <p>Replication to guarantee data safety.</p>
+
+          <h3>Useful Tools</h3>
+          <p>Supplies tools to load, dump, and repair database.</p>
+
+        </div>
+      </div>
+
+      <div class="row examples" id="examples">
+        <h2>Examples</h2>
+        <pre><code class="Bash">
+./ledis-server -config=/etc/ledis.json
+
+//another shell
+ledis-cli -p 6380
+
+ledis 127.0.0.1:6380&gt; set a 1
+OK
+ledis 127.0.0.1:6380&gt; get a
+"1"
+          </code></pre>
+
+          <h2>Lib Example</h2>
+          <pre><code class="Bash">import "github.com/siddontang/ledisdb/ledis"
+l, _ := ledis.Open(cfg)
+db, _ := l.Select(0)
+
+db.Set(key, value)
+
+db.Get(key)
+</code></pre>
+      </div>
+
+      <!-- /benchmark-->
+      <div class="row benchmark" id="benchmark"> 
+      <h2>Benchmark</h2>
+
+      </div>
+
+      <!-- /contact-->
+      <div class="row contact" id="contact">
+      <h2>Contact</h2>
+
+      <div class="col-lg-6">
+        <h4>Author:</h4>
+        <div>
+            <p><a href="https://github.com/siddontang" class="icon-github icon-2x"></a>&nbsp; SiddonTang: <a class="underline-link" href="mailto:siddontang@gmail.com">siddontang@gmail.com</a></p>
+        </div>    
+      </div>
+        
+        <div style="overflow:hidden;"> 
+          <h4>Contributors:</h4>
+          <p><a href="https://github.com/silentsai" class="icon-github icon-2x "></a>&nbsp;Cen Qi'chao: <a class="underline-link" href="mailto:cenqichao@gmail.com">cenqichao@gmail.com</a></p>
+          <p><a href="https://github.com/Gohan" class="icon-github icon-2x "></a>&nbsp;Vash: <a class="underline-link" href="mailto:cppgohan@gmail.com">cppgohan@gmail.com</a></p>
+
+          <p><a href="https://github.com/Tiaotiao" class="icon-github icon-2x "></a>&nbsp;Yang Li'yao: <a class="underline-link" href="mailto:tiaotiaoyly@gmail.com"> tiaotiaoyly@gmail.com</a></p>
+
+          <p><a href="https://github.com/wenyekui" class="icon-github icon-2x "></a>&nbsp;Wen Ye'kui:<a class="underline-link" href="mailto: wyk4true@gmail.com" > wyk4true@gmail.com</a></p>
+
+          <p><a  href="https://github.com/holys" class="icon-github icon-2x "></a>&nbsp;Chen Da'hui: <a class="underline-link" href="mailto:chendahui007@gmail.com" > chendahui007@gmail.com</a></p>
+        </div>
+
+      </div>
+
+
+      <!-- /footer-->
+  <!--     <div class="footer">
+
+
+        <p>CopyRight@LedisDB // <a target="_blank"href="https://github.com/siddontang/ledisdb/blob/master/LICENSE">MIT  License</a> // maintained by <a target="_blank" href="https://github.com/siddontang">SiddonTang</a></p>
+      </div>
+ -->
+
+    <div id="footer-wrapper" class="gradient">
+        <div id="footer" class="row">
+            <div class="large-4 columns col-sm-4">
+                <h2 id="contribute" >Get Involved</h2>
+                <ul class="underline-link">
+                  <li><a target="_blank" href="https://github.com/siddontang/ledisdb/issues?state=open">Issue Tracker</a></li>
+                  <li><a target="_blank" href="https://github.com/siddontang/ledisdb/issues?labels=todo&page=1&state=open">Todo</a></li>
+                </ul>
+            </div>
+      
+            <div class="large-4 columns col-sm-4">
+                <h2>Quick Links</h2>
+                <ul class="underline-link">
+                  <li><a target="_blank" href="https://github.com/siddontang/ledisdb/wiki">Wiki</a></li>
+                   <li><a target="_blank" href="http://ledis-py.readthedocs.org/">Ledis-py</a></li>
+                   <li><a target="_blank" href="https://godoc.org/github.com/siddontang/ledisdb">Godoc</a></li>
+                   <li><a target="_blank" href="http://blog.csdn.net/siddontang/article/category/2264003">Author's Chinese Blog</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="about" class="about">
+            <div class="">
+                <p>LedisDB was created and maintained by <a class="underline-link" href="https://github.com/siddontang">SiddonTang</a>.
+                    <br>The project is released under an
+                    <a  class="underline-link" href="https://github.com/siddontang/ledisdb/blob/master/LICENSE">MIT License</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    </div> <!-- /container -->
+
+    <link rel="stylesheet" href="css/github.css">
+    <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>
