@@ -122,6 +122,6 @@ a:hover,a:focus {
   margin-bottom: 10px;
 }
 
-#datatable {
+.hide {
   display: none;
 }
