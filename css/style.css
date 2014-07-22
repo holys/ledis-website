@@ -122,6 +122,10 @@ a:hover,a:focus {
   margin-bottom: 10px;
 }
 
+.row {
+  margin-left: 0px;
+}
+
 .hide {
   display: none;
 }
